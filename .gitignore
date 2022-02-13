@@ -17,16 +17,25 @@
 mono_crash.*
 
 # Build results
-[Dd]ebug/
+#[Dd]ebug/ # not specific enough -- ignores a boost include folders
+/[Dd]ebug/
+**/[Ww]in32/[Dd]ebug/
+**/[Ww]in64/[Dd]ebug/
+**/[Ww]in32/[Rr]elease/
+**/[Ww]in64/[Rr]elease/
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
-x64/
-x86/
-[Aa][Rr][Mm]/
+#x64/   # not specific enough -- ignores library folders
+#x86/
+**/x86/[Dd]ebug/
+**/x64/[Dd]ebug/[Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
-[Bb]in/
+#[Bb]in/
+/[Bb]in/
+**/[Bb]in/[Rr]elease/
+**/[Bb]in/[Dd]ebug/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
@@ -351,3 +360,11 @@ MigrationBackup/
 *.tlog
 *.lastbuildstate
 *.manifest
+
+#### Local
+/Preparing
+
+**/Win32/Final Release/
+**/Win64/Final Release/
+# CMAKE out folder
+/out
