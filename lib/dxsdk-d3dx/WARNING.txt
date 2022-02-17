@@ -1,0 +1,2 @@
+Use of dxsdk-d3dx is not recommended for new projects.  See
+  https://aka.ms/dxsdk for more information.
