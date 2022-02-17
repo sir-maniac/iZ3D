@@ -17,7 +17,7 @@ namespace std{
 	using ::type_info;
 }
 #include <boost/lexical_cast.hpp>
-#include <boost/tr1/memory.hpp>
+#include <boost/shared_ptr.hpp>
 #include <boost/filesystem/detail/utf8_codecvt_facet.hpp>
 
 using namespace boost::filesystem::detail;
