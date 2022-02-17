@@ -439,11 +439,11 @@ void LogMessage(SEVERITY severity, const Char* module, const Char* format, ...)
 }
 
 template<typename Char>
-void LogMessage(SEVERITY severity, const std::basic_string<Char>& module, const std::basic_string<Char>& format, ...)
+void LogMessage(SEVERITY severity, const std::basic_string<Char>& module, const std::basic_string<Char>* format, ...)
 {
 	va_list args;
 	va_start(args, format);
-	LogMessage(severity, module.c_str(), true, true, format.c_str(), args);
+	LogMessage(severity, module.c_str(), true, true, format->c_str(), args);
 	va_end(args);
 }
 
@@ -457,11 +457,11 @@ void LogMessageEx(SEVERITY severity, const Char* module, bool addEndl, bool addM
 }
 
 template<typename Char>
-void LogMessageEx(SEVERITY severity, const std::basic_string<Char>& module, bool addEndl, bool addMarker, const std::basic_string<Char>& format, ...)
+void LogMessageEx(SEVERITY severity, const std::basic_string<Char>& module, bool addEndl, bool addMarker, const std::basic_string<Char>* format, ...)
 {
 	va_list args;
 	va_start(args, format);
-	LogMessage(severity, module.c_str(), addEndl, addMarker, format.c_str(), args);
+	LogMessage(severity, module.c_str(), addEndl, addMarker, format->c_str(), args);
 	va_end(args);
 }
 
