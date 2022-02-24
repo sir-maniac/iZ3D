@@ -6,12 +6,16 @@
 
 /////////////////////////////////////////////////////////////////////////////
 
+namespace Streamers {
+	template <typename T> struct singleton_default;
+}
+
 namespace WriteStreamer
 {
 
 	class CmdFlowWriteStreamer: public XMLStreamer
 	{
-		friend struct boost::details::pool::singleton_default<CmdFlowWriteStreamer>;
+		friend class Streamers::singleton_default<CmdFlowWriteStreamer>;
 		private:
 		CmdFlowWriteStreamer()
 			:	XMLStreamer( XMLStreamer::TXML_OpenForWrite )
@@ -90,7 +94,7 @@ namespace ReadStreamer
 
 	class CmdFlowReadStreamer: public XMLStreamer
 	{
-		friend struct boost::details::pool::singleton_default<CmdFlowReadStreamer>;
+		friend class Streamers::singleton_default<CmdFlowReadStreamer>;
 	private:
 		CmdFlowReadStreamer()
 			:	XMLStreamer( XMLStreamer::TXML_OpenForRead )

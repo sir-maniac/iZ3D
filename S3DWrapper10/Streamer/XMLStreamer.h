@@ -10,7 +10,6 @@
 #include <d3d10umddi.h>
 #include "ResourceManager.h"
 #include "TypePtr.h"
-#include "boost/pool/detail/singleton.hpp"
 #include <list>
 
 //////////////////////////////////////////////////////////////////////////

@@ -4,11 +4,49 @@
 
 //////////////////////////////////////////////////////////////////////////
 
+namespace Streamers {
+
+	// A simple singleton to replace the one removed from boost pool
+	template <typename T>
+	struct singleton_default
+	{
+	private:
+		singleton_default() {}
+
+		struct force_static
+		{
+			// According to boost documentation, this ensures instance() is called before main()
+			//   which keeps threading race issues from happening
+			force_static() { singleton_default<T>:instance(); }
+			static void fake_call() {}
+		};
+
+	public:
+		typedef T object_type;
+
+		static object_type& instance()
+		{
+			static T inst{};
+
+			// According to boost documentation this forces instantiation, and makes it exist before
+			//   main()
+			force_static::fake_call();
+
+			return inst;
+		}
+	private:
+		T m_instance = 0;
+
+	};
+}
+
+//////////////////////////////////////////////////////////////////////////
+
 namespace WriteStreamer
 {
 	CmdFlowWriteStreamer& Get()
 	{
-		return boost::details::pool::singleton_default<CmdFlowWriteStreamer>::instance();
+		return Streamers::singleton_default<CmdFlowWriteStreamer>::instance();
 	}
 
 	bool IsOK()
@@ -66,7 +104,7 @@ namespace ReadStreamer
 {
 	CmdFlowReadStreamer& Get()
 	{
-		return boost::details::pool::singleton_default<CmdFlowReadStreamer>::instance();
+		return Streamers::singleton_default<CmdFlowReadStreamer>::instance();
 	}
 
 	void	CmdBegin( D3D10DDI_HDEVICE& hDevice_  )

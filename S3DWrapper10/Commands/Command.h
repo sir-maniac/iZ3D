@@ -16,6 +16,9 @@
 #include "..\streamer\DumpState.h"
 #include "..\streamer\BinaryDumper.h"
 
+#undef malloc  // msvc's macros conflict with boost pool
+#undef free 
+
 enum TextureType 
 {
 	TT_MONO,		// Only left RT contain correct image
@@ -497,7 +500,7 @@ namespace Commands
 				m_InternalPool = new boost::object_pool<T>;
 			}
 			++m_InternalPoolUseCount;
-			return m_InternalPool->malloc_mem();
+			return m_InternalPool->malloc();
 		}
 
 		void* operator new ( size_t nSize_, int _Block, const char * _Filename, int _Line )
@@ -511,7 +514,7 @@ namespace Commands
 				m_InternalPool = new boost::object_pool<T>;
 			}
 			++m_InternalPoolUseCount;
-			return m_InternalPool->malloc_mem();
+			return m_InternalPool->malloc();
 		}
 
 		void operator delete ( void * pAddr_ )
