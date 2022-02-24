@@ -218,9 +218,9 @@ public:
 	typedef typename Policy::difference_type	difference_type;
 
     // convert an allocator<T> to allocator<U>
-    template<typename U>
+    template<typename V>
     struct rebind {
-        typedef small_object_allocator<U, typename Policy::rebind<U>::other> other;
+        typedef small_object_allocator<V, typename Policy::template rebind<V>::other> other;
     };
 
 public:	
@@ -228,11 +228,11 @@ public:
 	static const allocation_desc base_classes[base_num_classes];	// allocator classes(sizes of blocks)
 
 private:
-	typedef typename policy_type::rebind<char>::other	byte_allocator_type;
+	typedef typename policy_type::template rebind<char>::other	byte_allocator_type;
 	typedef block_allocator<byte_allocator_type>		block_allocator_type;
 	typedef boost::shared_array<block_allocator_type>	block_allocator_array;
 
-	typedef typename policy_type::rebind<block_allocator_type>::other	block_allocator_allocator;
+	typedef typename policy_type::template rebind<block_allocator_type>::other	block_allocator_allocator;
 
 	struct allocator_deallocator
 	{
