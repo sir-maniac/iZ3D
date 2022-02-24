@@ -521,7 +521,7 @@ namespace Commands
 			//CriticalSectionDebugLocker locker( m_csAllocator, message.c_str() );
 
 			assert(m_InternalPoolUseCount > 0);
-			m_InternalPool->free_mem( (T*)pAddr_ );
+			m_InternalPool->free( (T*)pAddr_ );
 			if (--m_InternalPoolUseCount == 0) 
 			{
 				delete m_InternalPool;
@@ -536,7 +536,7 @@ namespace Commands
 			//CriticalSectionDebugLocker locker( m_csAllocator, message.c_str() );
 
 			assert(m_InternalPoolUseCount > 0);
-			m_InternalPool->free_mem( (T*)pAddr_ );
+			m_InternalPool->free( (T*)pAddr_ );
 			if (--m_InternalPoolUseCount == 0) 
 			{
 				delete m_InternalPool;
