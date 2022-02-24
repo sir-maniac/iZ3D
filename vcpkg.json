@@ -1,0 +1,37 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg/master/scripts/vcpkg.schema.json",
+  "name": "iz3d",
+  "version": "1.14.0",
+  "$disabled_dependencies": [
+  ],
+  "dependencies": [
+    "boost-core",
+    "boost-bind",
+    "boost-algorithm",
+    "boost-filesystem",
+    "boost-lexical-cast",
+    "boost-property-tree",
+    "boost-thread",
+    "boost-tokenizer",
+    "boost-unordered",
+    "devil",
+    "directxsdk",
+    {
+      "name": "xerces-c",
+      "features": [ "xmlch-wchar" ]
+    },
+    "zlib"
+  ],
+  "builtin-baseline": "b1642553ec6049bb5ccdf59bea6b4aaca1033e82",
+  "overrides": [
+    {
+      "name": "boost-core",
+      "version": "1.78.0"
+    },
+    {
+      "name": "zlib",
+      "version": "1.2.11",
+      "port-version": 13
+    }
+  ]
+}
