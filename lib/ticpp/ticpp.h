@@ -38,17 +38,23 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 @todo add TYPECOUNT support. See ticpp::NodeFactory.
 @todo Add a quick reference
 */
-#ifdef TIXML_USE_TICPP
+
+ /*
+ * THIS FILE WAS ALTERED BY Matt Janisz, 12. October 2012.
+ *
+ * - added ticppapi.h include and TICPP_API dll-interface to support building DLL using VS200X
+ */
+
+#ifndef TIXML_USE_TICPP
+	#define TIXML_USE_TICPP
+#endif
 
 #ifndef TICPP_INCLUDED
 #define TICPP_INCLUDED
 
 #include "tinyxml.h"
-#include <sstream>
-#include <vector>
+
 #include <memory>
-#include <exception>
-#include <typeinfo>
 
 /**
 @subpage ticpp is a TinyXML wrapper that uses a lot more C++ ideals.
@@ -65,7 +71,7 @@ namespace ticpp
     /**
 	This is a ticpp exception class
 	*/
-	class Exception : public std::exception
+	class TICPP_API Exception : public std::exception
 	{
 	public:
 		/**
@@ -95,59 +101,16 @@ namespace ticpp
 	}
 
 	// Forward Declarations for Visitor, and others.
-	class Document;
-	class Element;
-	class Declaration;
-	class StylesheetReference;
-	class Text;
-	class Comment;
-	class Attribute;
-
-	/** Wrapper around TiXmlVisitor */
-	class Visitor : public TiXmlVisitor
-	{
-	public:
-		// Overload the TiXmlVisitor functions, wrap objects, call ticpp::Visitor functions
-		/// @internal
-		virtual bool VisitEnter( const TiXmlDocument& doc );
-		/// @internal
-		virtual bool VisitExit( const TiXmlDocument& doc );
-		/// @internal
-		virtual bool VisitEnter( const TiXmlElement& element, const TiXmlAttribute* firstAttribute );
-		/// @internal
-		virtual bool VisitExit( const TiXmlElement& element );
-		/// @internal
-		virtual bool Visit( const TiXmlDeclaration& declaration );
-		/// @internal
-		virtual bool Visit( const TiXmlStylesheetReference& stylesheet );
-		/// @internal
-		virtual bool Visit( const TiXmlText& text );
-		/// @internal
-		virtual bool Visit( const TiXmlComment& comment );
-
-	public:
-		/// Visit a document.
-		virtual bool VisitEnter( const Document& /*doc*/ )			{ return true; }
-		/// Visit a document.
-		virtual bool VisitExit( const Document& /*doc*/ )			{ return true; }
-
-		/// Visit an element.
-		virtual bool VisitEnter( const Element& /*element*/, const Attribute* /*firstAttribute*/ )	{ return true; }
-		/// Visit an element.
-		virtual bool VisitExit( const Element& /*element*/ )		{ return true; }
-
-		/// Visit a declaration
-		virtual bool Visit( const Declaration& /*declaration*/ )	{ return true; }
-		/// Visit a stylesheet reference
-		virtual bool Visit( const StylesheetReference& /*stylesheet*/ )	{ return true; }
-		/// Visit a text node
-		virtual bool Visit( const Text& /*text*/ )					{ return true; }
-		/// Visit a comment node
-		virtual bool Visit( const Comment& /*comment*/ )			{ return true; }
-	};
+	class TICPP_API Document;
+	class TICPP_API Element;
+	class TICPP_API Declaration;
+	class TICPP_API StylesheetReference;
+	class TICPP_API Text;
+	class TICPP_API Comment;
+	class TICPP_API Attribute;
 
 	/** Wrapper around TiXmlBase */
-	class Base
+	class TICPP_API Base
 	{
 	public:
 
@@ -224,7 +187,7 @@ namespace ticpp
 		{
 			return ( GetBasePointer() == rhs.GetBasePointer() );
 		}
-		
+
 		/**
 		Compare internal TiXml pointers to determine is both are wrappers around the same node
 		*/
@@ -232,7 +195,7 @@ namespace ticpp
 		{
 			return ( GetBasePointer() != rhs.GetBasePointer() );
 		}
-		
+
 		/**
 		Builds detailed error string using TiXmlDocument::Error() and others
 		*/
@@ -249,8 +212,8 @@ namespace ticpp
 					if ( doc->Error() )
 					{
 						full_message 	<< "\nDescription: " << doc->ErrorDesc()
-										<< "\nFile: " << (strlen( doc->Value() ) > 0 ? doc->Value() : "<unnamed-file>") 
-										<< "\nLine: " << doc->ErrorRow() 
+										<< "\nFile: " << (strlen( doc->Value() ) > 0 ? doc->Value() : "<unnamed-file>")
+										<< "\nLine: " << doc->ErrorRow()
 										<< "\nColumn: " << doc->ErrorCol();
 					}
 				}
@@ -286,7 +249,7 @@ namespace ticpp
 			{
 				TICPPTHROW( "Internal TiXml Pointer is NULL" );
 			}
-		}		
+		}
 
 		/**
 		@internal
@@ -298,7 +261,7 @@ namespace ticpp
 	/**
 	Wrapper around TiXmlAttribute
 	*/
-	class Attribute : public Base
+	class TICPP_API Attribute : public Base
 	{
 	private:
 		TiXmlAttribute* m_tiXmlPointer;
@@ -406,11 +369,7 @@ namespace ticpp
 		*/
 		void operator=( const Attribute& copy );
 
-		/**
-		@internal
-		Updates the reference count for the old and new pointers.
-		*/
-		Attribute( const Attribute& copy );
+		Attribute( const Attribute& copy ) = delete;
 
 		/*
 		Decrements reference count.
@@ -465,7 +424,7 @@ namespace ticpp
 	/**
 	Wrapper around TiXmlNode
 	*/
-	class Node : public Base
+	class TICPP_API Node : public Base
 	{
 	public:
 
@@ -616,7 +575,7 @@ namespace ticpp
 		@see LinkEndChild
 		@see TiXmlNode::InsertEndChild
 		*/
-		Node* InsertEndChild( Node& addThis );
+		Node* InsertEndChild( const Node& addThis );
 
 		/**
 		Adds a child past the LastChild.
@@ -641,7 +600,7 @@ namespace ticpp
 		@see InsertAfterChild
 		@see TiXmlNode::InsertBeforeChild
 		*/
-		Node* InsertBeforeChild( Node* beforeThis, Node& addThis );
+		Node* InsertBeforeChild( Node* beforeThis, const Node& addThis );
 
 		/**
 		Adds a child after the specified child.
@@ -654,7 +613,7 @@ namespace ticpp
 		@see InsertBeforeChild
 		@see TiXmlNode::InsertAfterChild
 		*/
-		Node* InsertAfterChild( Node* afterThis, Node& addThis );
+		Node* InsertAfterChild( Node* afterThis, const Node& addThis );
 
 		/**
 		Replace a child of this node.
@@ -666,7 +625,7 @@ namespace ticpp
 
 		@see TiXmlNode::ReplaceChild
 		*/
-		Node* ReplaceChild( Node* replaceThis, Node& withThis );
+		Node* ReplaceChild( Node* replaceThis, const Node& withThis );
 
 		/**
 		Delete a child of this node.
@@ -965,13 +924,13 @@ namespace ticpp
 		/**
 		Create an exact duplicate of this node and return it.
 
-		@note Using auto_ptr to manage the memory declared on the heap by TiXmlNode::Clone.
+		@note Using unique_ptr to manage the memory declared on the heap by TiXmlNode::Clone.
 		@code
 		// Now using clone
 		ticpp::Document doc( "C:\\Test.xml" );
 		ticpp::Node* sectionToClone;
 		sectionToClone = doc.FirstChild( "settings" );
-		std::auto_ptr< ticpp::Node > clonedNode = sectionToClone->Clone();
+		std::unique_ptr< ticpp::Node > clonedNode = sectionToClone->Clone();
 		// Now you can use the clone.
 		ticpp::Node* node2 = clonedNode->FirstChildElement()->FirstChild();
 		...
@@ -979,7 +938,7 @@ namespace ticpp
 		@endcode
 		@return Pointer the duplicate node.
 		*/
-		std::auto_ptr< Node > Clone() const;
+		std::unique_ptr< Node > Clone() const;
 
 		/**
 		Accept a hierchical visit the nodes in the TinyXML DOM.
@@ -1162,7 +1121,7 @@ namespace ticpp
 
 		/** Sets internal pointer to the Previous Sibling, or Iterator::END, if there are no prior siblings */
 		Iterator operator--(int)
-		{			
+		{
 			Iterator tmp(*this);
 			--(*this);
 			return tmp;
@@ -1317,7 +1276,7 @@ namespace ticpp
 	};
 
 	/** Wrapper around TiXmlComment */
-	class Comment : public NodeImp< TiXmlComment >
+	class TICPP_API Comment : public NodeImp< TiXmlComment >
 	{
 	public:
 
@@ -1338,7 +1297,7 @@ namespace ticpp
 	};
 
 	/** Wrapper around TiXmlText */
-	class Text : public NodeImp< TiXmlText >
+	class TICPP_API Text : public NodeImp< TiXmlText >
 	{
 	public:
 
@@ -1377,7 +1336,7 @@ namespace ticpp
 	};
 
 	/** Wrapper around TiXmlDocument */
-	class Document : public NodeImp< TiXmlDocument >
+	class TICPP_API Document : public NodeImp< TiXmlDocument >
 	{
 	public:
 		/**
@@ -1397,11 +1356,12 @@ namespace ticpp
 		Document( const char* documentName );
 
 		/**
-		Constructor.
-		Create a document with a name. The name of the document is also the filename of the xml.
-
-		@param documentName Name to set in the Document.
-		*/
+		 * Constructor.
+		 * Create a document with a name. The name of the document is also the filename of the xml.
+		 * @param documentName Name to set in the Document.
+		 * @note LoadFile() needs to be called to actually load the data from the file specified by documentName
+		 * 		 SaveFile() needs to be called to save data to file specified by documentName.
+		 */
 		Document( const std::string& documentName );
 
 		/**
@@ -1455,7 +1415,7 @@ namespace ticpp
 	};
 
 	/** Wrapper around TiXmlElement */
-	class Element : public NodeImp< TiXmlElement >
+	class TICPP_API Element : public NodeImp< TiXmlElement >
 	{
 	public:
 		/**
@@ -1746,7 +1706,8 @@ namespace ticpp
 			{
 				if ( throwIfNotFound )
 				{
-					TICPPTHROW( "Attribute does not exist" );
+					const std::string error( std::string( "Attribute '" ) + name + std::string( "' does not exist" ) );
+					TICPPTHROW( error );
 				}
 			}
 			else
@@ -1778,7 +1739,8 @@ namespace ticpp
 			{
 				if ( throwIfNotFound )
 				{
-					TICPPTHROW( "Attribute does not exist" );
+					const std::string error( std::string( "Attribute '" ) + name + std::string( "' does not exist" ) );
+					TICPPTHROW( error );
 				}
 				else
 				{
@@ -1832,7 +1794,7 @@ namespace ticpp
 	};
 
 	/** Wrapper around TiXmlDeclaration */
-	class Declaration : public NodeImp< TiXmlDeclaration >
+	class TICPP_API Declaration : public NodeImp< TiXmlDeclaration >
 	{
 	public:
 		/**
@@ -1867,7 +1829,7 @@ namespace ticpp
 	};
 
 	/** Wrapper around TiXmlStylesheetReference */
-	class StylesheetReference : public NodeImp< TiXmlStylesheetReference >
+	class TICPP_API StylesheetReference : public NodeImp< TiXmlStylesheetReference >
 	{
 	public:
 		/**
@@ -1898,5 +1860,3 @@ namespace ticpp
 }
 
 #endif	// TICPP_INCLUDED
-
-#endif // TIXML_USE_TICPP
