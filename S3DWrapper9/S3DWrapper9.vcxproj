@@ -116,7 +116,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\Shared\;..\lib\d3d9\include\;..\lib\madCHook;..\lib\tinyxml\include\;..\lib\alglib\include\;..\lib\boost\;..\lib\xerces\include;..\lib\DbgHelp\inc\;..\OutputMethods\OutputLib\;..\lib\PerfSDK\Include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Shared\;..\lib\madCHook;..\lib\alglib\include\;..\lib\DbgHelp\inc\;..\OutputMethods\OutputLib\;..\lib\PerfSDK\Include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;S3DWRAPPER9_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
     </ClCompile>
@@ -129,7 +129,7 @@
     <Link>
       <AdditionalDependencies>LlamaXMLd.lib;Psapi.lib;Setupapi.lib;dxerr.lib;d3dx9.lib;dxguid.lib;Winmm.lib;MadCHook32.lib;ticppd.lib;comctl32.lib;d3d10.lib;d3dx10.lib;xerces-c_static_3D.lib;S3DDevIL.lib;S3Dilu.lib;ddraw.lib;version.lib;NVPerfSDK.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
-      <AdditionalLibraryDirectories>..\lib\d3d9\lib\x86\;..\lib\tinyxml\lib\x86\;..\lib\LlamaXML\lib\x86\;..\lib\madCHook;..\lib\boost\lib\Win32;..\lib\xerces\lib\Win32\lib;..\lib\PerfSDK\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\lib\LlamaXML\lib\x86\;..\lib\madCHook;..\lib\PerfSDK\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>LIBCMT;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ModuleDefinitionFile>$(ProjectName).def</ModuleDefinitionFile>
       <DelayLoadDLLs>version.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
@@ -160,7 +160,7 @@
       <TargetEnvironment>X64</TargetEnvironment>
     </Midl>
     <ClCompile>
-      <AdditionalIncludeDirectories>..\Shared\;..\lib\d3d9\include\;..\lib\madCHook;..\lib\tinyxml\include\;..\lib\alglib\include\;..\lib\boost\;..\lib\xerces\include\Win64;..\lib\DbgHelp\inc\;..\OutputMethods\OutputLib\;..\lib\PerfSDK\Include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Shared\;..\lib\madCHook;..\lib\alglib\include\;..\lib\DbgHelp\inc\;..\OutputMethods\OutputLib\;..\lib\PerfSDK\Include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN64;_DEBUG;_WINDOWS;_USRDLL;S3DWRAPPER9_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
     </ClCompile>
@@ -173,7 +173,7 @@
     <Link>
       <AdditionalDependencies>LlamaXMLd.lib;libcmtd.lib;Psapi.lib;Setupapi.lib;dxerr.lib;d3dx9.lib;dxguid.lib;Winmm.lib;MadCHook64md.lib;ticppd.lib;strsafe.lib;d3d10.lib;d3dx10.lib;xerces-c_static_3D.lib;S3DDevIL.lib;S3Dilu.lib;ddraw.lib;version.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
-      <AdditionalLibraryDirectories>..\lib\LlamaXML\lib\x64\;..\lib\d3d9\lib\x64\;..\lib\tinyxml\lib\x64\;..\lib\madCHook;..\lib\xerces\lib\Win64\lib;..\lib\boost\lib\Win64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\lib\LlamaXML\lib\x64\;..\lib\madCHook;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ModuleDefinitionFile>$(ProjectName).def</ModuleDefinitionFile>
@@ -202,7 +202,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\Shared\;..\lib\d3d9\include\;..\lib\madCHook;..\lib\tinyxml\include\;..\lib\alglib\include\;..\lib\boost\;..\lib\xerces\include;..\lib\DbgHelp\inc\;..\OutputMethods\OutputLib\;..\lib\PerfSDK\Include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Shared\;..\lib\madCHook;..\lib\alglib\include\;..\lib\DbgHelp\inc\;..\OutputMethods\OutputLib\;..\lib\PerfSDK\Include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;S3DWRAPPER9_EXPORTS;BOOST_NO_STD_TYPEINFO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
     </ClCompile>
@@ -215,7 +215,7 @@
     <Link>
       <AdditionalDependencies>LlamaXML.lib;Psapi.lib;Setupapi.lib;dxerr.lib;d3dx9.lib;dxguid.lib;Winmm.lib;MadCHook32.lib;ticpp.lib;comctl32.lib;d3d10.lib;d3dx10.lib;xerces-c_static_3.lib;xerces-c_3.lib;ddraw.lib;S3DDevIL.lib;S3Dilu.lib;version.lib;NVPerfSDK.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
-      <AdditionalLibraryDirectories>..\lib\d3d9\lib\x86\;..\lib\tinyxml\lib\x86\;..\lib\LlamaXML\lib\x86\;..\lib\madCHook;..\lib\boost\lib\Win32;..\lib\xerces\lib\Win32\lib;..\lib\PerfSDK\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\lib\LlamaXML\lib\x86\;..\lib\madCHook;..\lib\PerfSDK\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ModuleDefinitionFile>$(ProjectName).def</ModuleDefinitionFile>
       <DelayLoadDLLs>version.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <SubSystem>Windows</SubSystem>
@@ -245,7 +245,7 @@
       <TargetEnvironment>X64</TargetEnvironment>
     </Midl>
     <ClCompile>
-      <AdditionalIncludeDirectories>..\Shared\;..\lib\d3d9\include\;..\lib\madCHook;..\lib\tinyxml\include\;..\lib\alglib\include\;..\lib\boost\;..\lib\xerces\include\Win64;..\lib\DbgHelp\inc\;..\OutputMethods\OutputLib\;..\lib\PerfSDK\Include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Shared\;..\lib\madCHook;..\lib\alglib\include\;..\lib\DbgHelp\inc\;..\OutputMethods\OutputLib\;..\lib\PerfSDK\Include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN64;NDEBUG;_WINDOWS;_USRDLL;S3DWRAPPER9_EXPORTS;XERCES_STATIC_LIBRARY;XML_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
     </ClCompile>
@@ -258,7 +258,7 @@
     <Link>
       <AdditionalDependencies>LlamaXML.lib;libcmt.lib;Psapi.lib;Setupapi.lib;dxerr.lib;d3dx9.lib;dxguid.lib;Winmm.lib;MadCHook64mt.lib;ticpp.lib;strsafe.lib;d3d10.lib;d3dx10.lib;xerces-c_static_3.lib;ddraw.lib;S3DDevIL.lib;S3Dilu.lib;version.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
-      <AdditionalLibraryDirectories>..\lib\d3d9\lib\x64\;..\lib\tinyxml\lib\x64\;..\lib\LlamaXML\lib\x64\;..\lib\madCHook;..\lib\xerces\lib\Win64\lib;..\lib\boost\lib\Win64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\lib\LlamaXML\lib\x64\;..\lib\madCHook;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ModuleDefinitionFile>$(ProjectName).def</ModuleDefinitionFile>
       <DelayLoadDLLs>version.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <SubSystem>Windows</SubSystem>
@@ -285,7 +285,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\Shared\;..\lib\d3d9\include\;..\lib\madCHook;..\lib\tinyxml\include\;..\lib\alglib\include\;..\lib\boost\;..\lib\xerces\include;..\lib\DbgHelp\inc\;..\OutputMethods\OutputLib\;..\lib\PerfSDK\Include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Shared\;..\lib\madCHook;..\lib\alglib\include\;..\lib\DbgHelp\inc\;..\OutputMethods\OutputLib\;..\lib\PerfSDK\Include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;S3DWRAPPER9_EXPORTS;BOOST_NO_STD_TYPEINFO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
     </ClCompile>
@@ -298,7 +298,7 @@
     <Link>
       <AdditionalDependencies>Psapi.lib;Setupapi.lib;dxerr.lib;d3dx9.lib;dxguid.lib;Winmm.lib;ticpp.lib;comctl32.lib;xerces-c_static_3.lib;version.lib;S3DDevIL.lib;S3Dilu.lib;MadCHook32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
-      <AdditionalLibraryDirectories>..\lib\d3d9\lib\x86\;..\lib\tinyxml\lib\x86\;..\lib\madCHook;..\lib\boost\lib\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\lib\madCHook;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ModuleDefinitionFile>$(ProjectName).def</ModuleDefinitionFile>
       <DelayLoadDLLs>version.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <SubSystem>Windows</SubSystem>
@@ -328,7 +328,7 @@
       <TargetEnvironment>X64</TargetEnvironment>
     </Midl>
     <ClCompile>
-      <AdditionalIncludeDirectories>..\Shared\;..\lib\d3d9\include\;..\lib\madCHook;..\lib\tinyxml\include\;..\lib\alglib\include\;..\lib\boost\;..\lib\xerces\include\Win64;..\lib\DbgHelp\inc\;..\OutputMethods\OutputLib\;..\lib\PerfSDK\Include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Shared\;..\lib\madCHook;..\lib\alglib\include\;..\lib\DbgHelp\inc\;..\OutputMethods\OutputLib\;..\lib\PerfSDK\Include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN64;NDEBUG;_WINDOWS;_USRDLL;S3DWRAPPER9_EXPORTS;BOOST_NO_STD_TYPEINFO;XERCES_STATIC_LIBRARY;XML_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
     </ClCompile>
@@ -341,7 +341,7 @@
     <Link>
       <AdditionalDependencies>Psapi.lib;Setupapi.lib;dxerr.lib;d3dx9.lib;dxguid.lib;Winmm.lib;ticpp.lib;comctl32.lib;xerces-c_static_3.lib;version.lib;S3DDevIL.lib;S3Dilu.lib;MadCHook64mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
-      <AdditionalLibraryDirectories>..\lib\d3d9\lib\x64\;..\lib\tinyxml\lib\x64\;..\lib\madCHook..;..\lib\xerces\lib\Win64\lib;..\lib\boost\lib\Win64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\lib\madCHook..;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ModuleDefinitionFile>$(ProjectName).def</ModuleDefinitionFile>
       <DelayLoadDLLs>version.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <SubSystem>Windows</SubSystem>

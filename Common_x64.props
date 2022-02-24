@@ -12,18 +12,18 @@
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)\Shared\;$(SolutionDir)\lib\madCHook;$(SolutionDir)\lib\ticpp\include\;$(SolutionDir)\lib\LlamaXML\include\;$(SolutionDir)\lib\wxWidgets\include\;$(SolutionDir)\lib\wxWidgets\include\msvc\;$(SolutionDir)\lib\DevIL\include\;$(SolutionDir)\lib\xerces\include;$(SolutionDir)\lib\vld\include;$(SolutionDir)\lib\squish\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)\Shared\;$(SolutionDir)\lib\dxsdk-d3dx\include;$(SolutionDir)\lib\madCHook;$(SolutionDir)\lib\LlamaXML\include\;$(SolutionDir)\lib\wxWidgets\include\;$(SolutionDir)\lib\wxWidgets\include\msvc\;$(SolutionDir)\lib\vld\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>TIXML_USE_TICPP;XERCES_STATIC_LIBRARY;XML_LIBRARY;STRSAFE_NO_DEPRECATE;WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <WarningLevel>Level3</WarningLevel>
       <DisableSpecificWarnings>4127;4201;4203;4342;4347;4514;4710;4820;4986;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <TreatSpecificWarningsAsErrors>4289;4545;4546;4549;4714;4836;4905;4906;4946 </TreatSpecificWarningsAsErrors>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)\lib\squish\lib\x64\;$(SolutionDir)\lib\ticpp\lib\x64\;$(SolutionDir)\lib\madCHook;$(SolutionDir)\lib\vld\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)\lib\madCHook;$(SolutionDir)\lib\dxsdk-d3dx\lib\x64-windows;$(SolutionDir)\lib\vld\lib\win64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>/ignore:4006 /ignore:4099 %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)\lib\ticpp\lib\x64\;$(SolutionDir)\lib\madCHook;$(SolutionDir)\lib\vld\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)\lib\madCHook;$(SolutionDir)\lib\dxsdk-d3dx\lib\x64-windows;$(SolutionDir)\lib\vld\lib\win64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
 </Project>
