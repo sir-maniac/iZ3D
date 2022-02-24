@@ -4,6 +4,7 @@
 #include <d3d10umddi.h>
 #include "../ArchiveFile/archivefile.h"
 #include <boost/unordered_map.hpp>
+#include <stdint.h>
 #include <vector>
 #include <functional>
 
@@ -407,7 +408,7 @@ namespace std
 	{	// hash functor
 	public:
 		typedef D3D10DDI_HRESOURCE _Kty;
-		typedef _Uint32t _Inttype;	// use first (1 or 2)*32 bits
+		typedef uint32_t _Inttype;	// use first (1 or 2)*32 bits
 
 		size_t operator()(_Kty _Keyval) const
 		{

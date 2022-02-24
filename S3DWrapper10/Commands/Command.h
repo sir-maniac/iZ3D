@@ -11,6 +11,7 @@
 #include <vector>
 #include <map>
 #include <set>
+#include <stdint.h>
 
 #include "..\streamer\DumpState.h"
 #include "..\streamer\BinaryDumper.h"
@@ -247,7 +248,7 @@ class hash<CommandsId>
 {	// hash functor
 public:
 	typedef CommandsId _Kty;
-	typedef _Uint32t _Inttype;	// use first (1 or 2)*32 bits
+	typedef uint32_t _Inttype;	// use first (1 or 2)*32 bits
 
 	size_t operator()(_Kty _Keyval) const
 	{
